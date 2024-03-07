@@ -45,23 +45,26 @@ function ReloadPrompt() {
       open={needRefresh}
       title="Install update"
       onClose={close}
+      className='modal'
     >
-      <p>A new app update is available.</p>
+      <div className='modal-box'>
+        <p>A new app update is available.</p>
 
-      <p>
-        <strong>Reload</strong> will refresh the app. You may lose the
-        progress, if any.
-      </p>
-      <p>
-        <strong>Cancel</strong> will install the update next time you visit
-        the app.
-      </p>
+        <p>
+          <strong>Reload</strong> will refresh the app. You may lose the
+          progress, if any.
+        </p>
+        <p>
+          <strong>Cancel</strong> will install the update next time you visit
+          the app.
+        </p>
 
-      <div className='modal-action'>
-        <button onClick={close}>
-          Cancel
-        </button>
-        <button onClick={() => updateServiceWorker(true)}>Reload</button>
+        <div className='modal-action'>
+          <button onClick={close}>
+            Cancel
+          </button>
+          <button onClick={() => updateServiceWorker(true)}>Reload</button>
+        </div>
       </div>
     </dialog>
   )
