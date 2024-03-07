@@ -21,7 +21,7 @@ function App() {
         </div>
       </div>
       <h1 className='text-indigo-400'>Vite + React 6</h1>
-      <h1 className='text-red-500 text-sm'>{import.meta.env.VITE_BUILD_DATE}</h1>
+      <h1 className='text-blue-500 text-sm'>{import.meta.env.VITE_BUILD_DATE}</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
