@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
   define:{
-    BUILD_DATE: new Date().toISOString()
+    'import.meta.env.VITE_BUILD_DATE': JSON.stringify(new Date().toISOString())
   },
   plugins: [    
     react(),
