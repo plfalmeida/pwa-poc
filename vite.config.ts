@@ -13,38 +13,7 @@ export default defineConfig({
         enabled: true
       },
       workbox: {
-        // cleanupOutdatedCaches: true,
-        // clientsClaim: true,
-        // skipWaiting: true,
         globPatterns: ['**/*.{js,css,html,svg}'],
-        runtimeCaching: [{
-          urlPattern: ({ url }) => url.href.includes('manifest'),
-          handler: 'StaleWhileRevalidate',
-          options: {
-            backgroundSync: {
-              name: 'manifest-cache',
-              options: {
-                maxRetentionTime: 10,
-                onSync: () => {
-                  alert('Sync')
-                }
-              }
-            }
-          }
-        }]
-        // runtimeCaching: [{
-        //   handler: 'NetworkOnly',
-        //   urlPattern: /\/react\/.*\/*.svg/,
-        //   method: 'GET',
-        //   options: {
-        //     backgroundSync: {
-        //       name: 'myQueueName',
-        //       options: {
-        //         maxRetentionTime: 24
-        //       }
-        //     }
-        //   }
-        // }]
       }
     }),
   ],
