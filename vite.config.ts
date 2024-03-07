@@ -12,7 +12,20 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         clientsClaim: true,
         skipWaiting: true,
-        globPatterns: ['**/*.{js,css,html,svg}']
+        globPatterns: ['**/*.{js,css,html,svg}'],
+        runtimeCaching: [{
+          handler: 'NetworkOnly',
+          urlPattern: /\/react\/.*\/*.svg/,
+          method: 'GET',
+          options: {
+            backgroundSync: {
+              name: 'myQueueName',
+              options: {
+                maxRetentionTime: 24
+              }
+            }
+          }
+        }]
       }
     }),
     react(),
