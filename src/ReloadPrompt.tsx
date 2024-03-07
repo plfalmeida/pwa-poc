@@ -20,6 +20,7 @@ function ReloadPrompt() {
       console.log("SW registration error", error);
     },
   });
+  console.log('🚀 > ReloadPrompt > needRefresh:', needRefresh)
 
   const close = () => {
     setOfflineReady(false);
