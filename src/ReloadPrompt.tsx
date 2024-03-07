@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import './ReloadPrompt.css'
 
 import { pwaInfo } from 'virtual:pwa-info'
@@ -7,6 +7,8 @@ import { useRegisterSW } from 'virtual:pwa-register/react'
 console.log(pwaInfo)
 
 function ReloadPrompt() {
+  const dialogRef = useRef<HTMLDialogElement>()
+
   const {
     offlineReady: [offlineReady, setOfflineReady],
     needRefresh: [needRefresh, setNeedRefresh],
@@ -31,6 +33,12 @@ function ReloadPrompt() {
     offlineReady &&
       alert("App is ready to work offline");
   }, [offlineReady]);
+
+  useEffect(() => {
+    if (needRefresh) {
+      dialogRef.current?.showModal()
+    }
+  }, [needRefresh])
 
   return (
     <dialog
