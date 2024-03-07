@@ -28,37 +28,33 @@ function ReloadPrompt() {
 
   useEffect(() => {
     offlineReady &&
-      alert({
-        title: "Ready",
-        message: "App is ready to work offline",
-        color: "blue",
-      });
+      alert("App is ready to work offline");
   }, [offlineReady]);
 
   return (
     <dialog
-    open={needRefresh}
-    title="Install update"
-    onClose={close}
-  >
-    <p>A new app update is available.</p>
+      open={needRefresh}
+      title="Install update"
+      onClose={close}
+    >
+      <p>A new app update is available.</p>
 
-    <p>
-      <strong>Reload</strong> will refresh the app. You may lose the
-      progress, if any.
-    </p>
-    <p>
-      <strong>Cancel</strong> will install the update next time you visit
-      the app.
-    </p>
+      <p>
+        <strong>Reload</strong> will refresh the app. You may lose the
+        progress, if any.
+      </p>
+      <p>
+        <strong>Cancel</strong> will install the update next time you visit
+        the app.
+      </p>
 
-    <div className='modal-action'>
-      <button onClick={close}>
-        Cancel
-      </button>
-      <button onClick={() => updateServiceWorker(true)}>Reload</button>
-    </div>
-  </dialog>
+      <div className='modal-action'>
+        <button onClick={close}>
+          Cancel
+        </button>
+        <button onClick={() => updateServiceWorker(true)}>Reload</button>
+      </div>
+    </dialog>
   )
 }
 
