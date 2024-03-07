@@ -21,9 +21,11 @@ function App() {
         </div>
       </div>
       <h1 className='text-indigo-400'>Vite + React 6</h1>
+      <h1 className='text-indigo-400'>{BUILD_DATE}</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
+
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR. v5 6
