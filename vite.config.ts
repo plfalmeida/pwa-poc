@@ -3,10 +3,10 @@ import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  define:{
+  define: {
     'import.meta.env.VITE_BUILD_DATE': JSON.stringify(new Date().toISOString())
   },
-  plugins: [    
+  plugins: [
     react(),
     VitePWA({
       devOptions: {
@@ -17,6 +17,21 @@ export default defineConfig({
         // clientsClaim: true,
         // skipWaiting: true,
         globPatterns: ['**/*.{js,css,html,svg}'],
+        runtimeCaching: [{
+          urlPattern: ({ url }) => url.href.includes('manifest'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            backgroundSync: {
+              name: 'manifest-cache',
+              options: {
+                maxRetentionTime: 10,
+                onSync: () => {
+                  alert('Sync')
+                }
+              }
+            }
+          }
+        }]
         // runtimeCaching: [{
         //   handler: 'NetworkOnly',
         //   urlPattern: /\/react\/.*\/*.svg/,
