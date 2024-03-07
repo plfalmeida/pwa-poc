@@ -14,15 +14,17 @@ function ReloadPrompt() {
     needRefresh: [needRefresh, setNeedRefresh],
     updateServiceWorker,
   } = useRegisterSW({
-    onRegistered(r) {
-      // eslint-disable-next-line prefer-template
-      console.log("SW Registered: " + r);
+    onRegisteredSW(_, registration) {
+      console.log("SW Registered: " + registration);
+      registration?.addEventListener("sync", event => {
+        console.log('🚀 > onRegisteredSW > event:', event)
+      })
     },
+
     onRegisterError(error) {
       console.log("SW registration error", error);
     },
   });
-  console.log('🚀 > ReloadPrompt > needRefresh:', needRefresh)
 
   const close = () => {
     setOfflineReady(false);
