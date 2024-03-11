@@ -15,6 +15,7 @@ function ReloadPrompt() {
     updateServiceWorker,
   } = useRegisterSW({
     onRegisteredSW(_, registration) {
+      console.log('🚀 > onRegisteredSW > registration:', (registration as any).periodicSync)
       console.log("SW Registered: " + registration);
       registration?.addEventListener("sync", event => {
         console.log('🚀 > onRegisteredSW > event:', event)
