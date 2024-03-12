@@ -5,7 +5,7 @@ export function DynamicRoute() {
         <div>
             <Link to="/">back</Link>
             <h1 className="text-sm">I am a Dynamic Route</h1>
-            <p className='text-green-500 text-sm'>{import.meta.env.VITE_BUILD_DATE}</p>
+            <p className='text-red-500 text-sm'>{import.meta.env.VITE_BUILD_DATE}</p>
         </div>
     )
 }
